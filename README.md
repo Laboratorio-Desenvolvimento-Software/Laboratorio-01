@@ -1,2 +1,2 @@
 # Laboratorio-01
-Primeiro projeto do laboratório de Projecto de Software
+Primeiro projeto da disciplina "Laboratório de Projeto de Software"
