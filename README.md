@@ -1,4 +1,4 @@
-# Projetos 1
+# Projeto 1
 Grupo 03 do laboratório da disciplina LDS 2/2023 PUC Minas - Praça da Liberdade
 
 ## Alunos integrantes da equipe
