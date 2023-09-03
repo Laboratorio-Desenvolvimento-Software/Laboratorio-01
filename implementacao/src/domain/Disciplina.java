@@ -111,6 +111,7 @@ public class Disciplina {
 	public String toString() {
 		return "Disciplina{" +
 				"id=" + id +
+				", nome=" + nome +
 				", periodo=" + periodo +
 				", professor=" + professor +
 				", alunos=" + alunos +

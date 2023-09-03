@@ -10,6 +10,7 @@ public class Professor {
 	public Professor(String nome) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
 
 	//getters and setters
@@ -39,11 +40,21 @@ public class Professor {
 	}
 
 	public boolean adicionarDisciplina(Disciplina disciplina) {
+		if(this.disciplinas.contains(disciplina)) return false;
+
+		disciplina.setProfessor(this);
 		return this.disciplinas.add(disciplina);
 	}
 
 	@Override
 	public String toString() {
+		if(this.disciplinas.size() == 0) {
+			return "Professor{" +
+				"id=" + id +
+				", nome=" + nome +
+				", disciplinas=" + disciplinas +
+				'}';
+		}
 		return "Professor{" +
 				"id=" + id +
 				", nome=" + nome +
