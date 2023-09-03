@@ -1,9 +1,9 @@
-package view;
+package app;
 
 import java.util.Scanner;
-
-import src.app.domain.*;
-
+import app.domain.*;
+import app.view.Logger;
+import app.view.SecretariaMenu;
 
 public class App {
 
@@ -48,21 +48,11 @@ public class App {
         }
     }
 
-
     public static void professorMenu(Scanner scanner) {
         System.out.println("Professor");
-        // You can add professor-specific functionality here
-
-
-        return;
     }
 
     public static void alunoMenu(Scanner scanner) {
         System.out.println("Aluno");
-        // You can add aluno-specific functionality here
-
-        // To go back to the main menu, you can simply return from this method
-        // The loop in the main method will continue, and the user can choose another option.
-        return;
     }
 }

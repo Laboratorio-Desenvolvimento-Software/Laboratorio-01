@@ -107,7 +107,6 @@ public class Disciplina implements Serializable {
 		this.preco = preco;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Disciplina{" +

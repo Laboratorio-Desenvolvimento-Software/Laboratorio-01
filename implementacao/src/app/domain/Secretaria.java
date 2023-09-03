@@ -1,6 +1,7 @@
 package app.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Secretaria implements Serializable {
@@ -32,9 +33,9 @@ public class Secretaria implements Serializable {
 		return this.alunos;
 	}
 
-
-
-	// Curriculo
+	// ================================================================
+	// Currículo
+	// ================================================================
 
 	public Curriculo gerarCurriculo(int ano, int semestre, Curso curso, Aluno aluno ) {
 		aluno.matricularEmCurso(curso);
@@ -85,10 +86,9 @@ public class Secretaria implements Serializable {
 		return null;
 	}
 
-
-
-
+	// ================================================================
 	// Aluno
+	// ================================================================
 
 	public boolean matricularNovoAluno(String nome) {
 		return this.alunos.add(new Aluno(nome));
@@ -122,11 +122,9 @@ public class Secretaria implements Serializable {
 		return false;
 	}
 
-
-
-
-
+	// ================================================================
 	// Professor
+	// ================================================================
 
 	public boolean cadastrarNovoProfessor(String nome) {
 		return this.professores.add(new Professor(nome));
@@ -161,7 +159,9 @@ public class Secretaria implements Serializable {
 		return false;
 	}
 
+	// ================================================================
 	// Curso
+	// ================================================================
 
 	public boolean criarNovoCurso(String nome, int creditos) {
 		return this.cursos.add(new Curso(nome, creditos));
