@@ -1,19 +1,20 @@
-package domain;
+package app.domain;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class Professor {
+public class Professor implements Serializable {
 	private UUID id;
 	private String nome;
 	private List<Disciplina> disciplinas;
 	
-	Professor(String nome) {
+	public Professor(String nome) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
 	}
-	
-	Professor(String nome, List<Disciplina> disciplinas) {
+
+	public Professor(String nome, List<Disciplina> disciplinas) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
 		setDisciplinas(disciplinas);
@@ -37,5 +38,14 @@ public class Professor {
 	
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+
+	@Override
+	public String toString() {
+		return "Professor{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", disciplinas=" + disciplinas +
+				'}';
 	}
 }
