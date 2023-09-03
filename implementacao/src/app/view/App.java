@@ -12,8 +12,7 @@ public class App {
         Secretaria secretaria = new Secretaria();
         Professor professor = new Professor("João");
         Aluno aluno = new Aluno("Maria");
-
-
+        
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");
 
