@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,8 @@ public class Curso {
 		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.creditos = creditos;
+		this.alunos = new ArrayList<Aluno>();
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
 
 	public Curso(String nome, int creditos, List<Disciplina> disciplinas) {
@@ -83,6 +86,21 @@ public class Curso {
 		}
 	}
 
+	public Disciplina consultarDisciplina(Disciplina disciplina) {
+		int index = this.disciplinas.indexOf(disciplina);
+		return this.disciplinas.get(index);
+	}
+
+	public Disciplina consultarDisciplina(String nome) {
+		for (Disciplina disciplina : this.disciplinas) {
+			if (disciplina.getId().toString().equalsIgnoreCase(nome)) {
+				return disciplina;
+			}
+		}
+
+		return null;
+	}
+
 	public void adicionarDisciplina(Disciplina disciplina) {
 		this.disciplinas.add(disciplina);
 	}
@@ -99,9 +117,5 @@ public class Curso {
 			}
 		}
 	}
-
-
-
-
 
 }

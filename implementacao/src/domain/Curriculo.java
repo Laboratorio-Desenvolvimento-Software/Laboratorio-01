@@ -10,14 +10,13 @@ public class Curriculo {
 	private Aluno aluno;
 	private List<Disciplina> disciplinas;
 
-
-	public Curriculo() {
-		this.id = UUID.randomUUID();
-	}
-
 	public Curriculo (int ano, int semestre, Curso curso, Aluno aluno) {
 		this.id = UUID.randomUUID();
-
+		setAno(ano);
+		setSemestre(semestre);
+		setCurso(curso);
+		setAluno(aluno);
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
 
 	// create getters and setters
@@ -77,11 +76,19 @@ public class Curriculo {
 	}
 
 	public double calcularCargaHoraria() {
+		if(this.disciplinas.isEmpty()) return 0.0;
+
 		double cargaHoraria = 0;
 		for(Disciplina d : this.disciplinas) {
 			cargaHoraria += d.getPreco();
 		}
 		return cargaHoraria;
+	}
+
+	public boolean removerDisciplina(Disciplina d) {
+		if(this.disciplinas.isEmpty()) return false;
+
+		return this.disciplinas.remove(d);
 	}
 
 	@Override

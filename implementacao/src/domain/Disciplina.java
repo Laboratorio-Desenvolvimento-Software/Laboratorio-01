@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Disciplina {
 	private UUID id;
+	private String nome;
 	private int periodo;
 	private Professor professor;
 	private List<Aluno> alunos;
@@ -12,15 +13,17 @@ public class Disciplina {
 	private int creditos;
 	private double preco;
 
-	public Disciplina(int periodo, int creditos, double preco) {
+	public Disciplina(String nome, int periodo, int creditos, double preco) {
 		this.id = UUID.randomUUID();
+		this.nome = nome;
 		this.disponivel = true;
 		setCreditos(creditos);
 		setPreco(preco);
 	}
 
-	public Disciplina(int periodo, int creditos, double preco, Professor professor) {
+	public Disciplina(String nome, int periodo, int creditos, double preco, Professor professor) {
 		this.id = UUID.randomUUID();
+		this.nome = nome;
 		this.disponivel = true;
 		setPeriodo(periodo);
 		setCreditos(creditos);
@@ -30,6 +33,10 @@ public class Disciplina {
 
 	public UUID getId() {
 		return id;
+	}
+
+	public String getNome() {
+		return this.nome;
 	}
 
 	public int getPeriodo() {

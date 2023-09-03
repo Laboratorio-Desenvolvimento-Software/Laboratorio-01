@@ -6,6 +6,7 @@ public class Aluno {
 	private UUID id;
 	private String nome;
 	private Curso curso;
+	private Curriculo curriculo;
 	private List<Disciplina> disciplinasObrigatorias;
 	private List<Disciplina> disciplinasAlternativas;
 
@@ -13,12 +14,19 @@ public class Aluno {
 	public Aluno(String nome) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
+		this.curso = null;
+		this.disciplinasObrigatorias = new ArrayList<Disciplina>();
+		this.disciplinasAlternativas = new ArrayList<Disciplina>();
+		this.curriculo = null;
 	}
 
 	public Aluno(String nome, Curso curso) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
 		this.matricularEmCurso(curso);
+		this.disciplinasObrigatorias = new ArrayList<Disciplina>();
+		this.disciplinasAlternativas = new ArrayList<Disciplina>();
+		this.curriculo = null;
 	}
 
 	public UUID getId() {
@@ -50,12 +58,21 @@ public class Aluno {
 		this.nome = nome;
 	}
 
+	public void setCurriculo(Curriculo curriculo) {
+		this.curriculo = curriculo;
+	}
+
 	public void matricularEmCurso(Curso curso) {
 		curso.adicionarAluno(this);
 		this.curso = curso;
 	}
 
 	public void adicionarDisciplina(Disciplina disciplina) {
+		if(this.curriculo == null || this.curso == null) {
+			System.out.println("Aluno nao esta matriculado em nenhum curso");
+			return;
+		}
+
 		if(this.disciplinasAlternativas.contains(disciplina) || this.disciplinasObrigatorias.contains(disciplina)) {
 			System.out.println("Aluno ja esta matriculado nesta disciplina");
 			return;
@@ -69,20 +86,28 @@ public class Aluno {
 
 			if(disciplina.matricularAluno(this)) {
 				this.disciplinasAlternativas.add(disciplina);
+				this.curriculo.adicionarDisciplina(disciplina);
 			}
 
 		}
 
 		if(disciplina.matricularAluno(this)) {
 			this.disciplinasObrigatorias.add(disciplina);
+			this.curriculo.adicionarDisciplina(disciplina);
 		}
 					
 	}
 
 	public void removerDisciplina(Disciplina disciplina) {
+		if(this.curriculo == null || this.curso == null) {
+			System.out.println("Aluno nao esta matriculado em nenhum curso");
+			return;
+		}
+
 		if(this.disciplinasAlternativas.contains(disciplina)) {
 			this.disciplinasAlternativas.remove(disciplina);
 			disciplina.cancelarMatricula(this);
+			this.curriculo.removerDisciplina(disciplina);
 			System.out.println("Disciplina removida com sucesso");			
 			return;
 		}
@@ -90,6 +115,7 @@ public class Aluno {
 		if(this.disciplinasObrigatorias.contains(disciplina)) {
 			this.disciplinasObrigatorias.remove(disciplina);
 			disciplina.cancelarMatricula(this);
+			this.curriculo.removerDisciplina(disciplina);
 			System.out.println("Disciplina removida com sucesso");
 			return;
 		}
@@ -99,12 +125,23 @@ public class Aluno {
 
 	@Override
 	public String toString() {
+		if(curso == null) {
+			return "Aluno{" +
+					"id=" + id +
+					", nome=" + nome +
+					", curso=" + null +
+					", disciplinasObrigatorias=" + disciplinasObrigatorias +
+					", disciplinasAlternativas=" + disciplinasAlternativas +
+				'}';
+
+		}
+
 		return "Aluno{" +
-				"id=" + id +
-				", nome=" + nome +
-				", curso=" + curso +
-				", disciplinasObrigatorias=" + disciplinasObrigatorias +
-				", disciplinasAlternativas=" + disciplinasAlternativas +
+					"id=" + id +
+					", nome=" + nome +
+					", curso=" + curso.getNome() +
+					", disciplinasObrigatorias=" + disciplinasObrigatorias +
+					", disciplinasAlternativas=" + disciplinasAlternativas +
 				'}';
 	}
 
