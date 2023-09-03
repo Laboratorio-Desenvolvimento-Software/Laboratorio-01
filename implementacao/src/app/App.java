@@ -2,11 +2,13 @@ package app;
 
 import app.domain.*;
 import app.util.Util;
+import java.util.List;
 
 public class App {
 
 	public static void main(String[] args) {
-		Professor osvaldo = new Professor("Osvaldo");
+		Disciplina disciplina = new Disciplina();
+		Professor osvaldo = new Professor("Osvaldo", List.of(disciplina));
 		boolean serialize = Util.serialize(osvaldo);
 		System.out.println("Serializado: " + serialize);
 

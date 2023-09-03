@@ -1,8 +1,9 @@
 package app.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Disciplina {
+public class Disciplina implements Serializable {
 	private int id;
 	private int periodo;
 	private Professor professor;

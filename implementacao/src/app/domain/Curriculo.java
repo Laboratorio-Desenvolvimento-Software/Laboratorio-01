@@ -1,8 +1,9 @@
 package app.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Curriculo {
+public class Curriculo implements Serializable {
 	private int id;
 	private int ano;
 	private int semestre;
