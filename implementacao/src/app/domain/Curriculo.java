@@ -1,8 +1,9 @@
 package domain;
 
 import java.util.*;
+import java.io.Serializable;
 
-public class Curriculo {
+public class Curriculo implements Serializable {
 	private UUID id;
 	private int ano;
 	private int semestre;

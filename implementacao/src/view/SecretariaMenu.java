@@ -1,7 +1,7 @@
 package view;
 
 import java.util.*;
-import domain.*;
+import src.app.domain.*;
 
 public class SecretariaMenu {
 

@@ -2,9 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import domain.Aluno;
-import domain.Professor;
-import domain.Secretaria;
+import src.app.domain.*;
 
 
 public class App {

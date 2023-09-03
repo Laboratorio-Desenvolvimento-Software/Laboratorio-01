@@ -1,9 +1,10 @@
-package domain;
+package app.domain;
 
 import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
-
-public class Disciplina {
+public class Disciplina implements Serializable {
 	private UUID id;
 	private String nome;
 	private int periodo;

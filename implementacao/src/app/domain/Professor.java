@@ -1,8 +1,9 @@
 package domain;
 
 import java.util.*;
+import java.io.Serializable;
 
-public class Professor {
+public class Professor implements Serializable {
 	private UUID id;
 	private String nome;
 	private List<Disciplina> disciplinas;

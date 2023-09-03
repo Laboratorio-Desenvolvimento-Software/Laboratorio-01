@@ -1,10 +1,9 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.io.Serializable;
 
-public class Curso {
+public class Curso implements Serializable {
 	private UUID id;
 	private String nome;
 	private int creditos;
