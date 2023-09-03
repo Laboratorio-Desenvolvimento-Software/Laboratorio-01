@@ -2,16 +2,15 @@ package app;
 
 import java.util.Scanner;
 import app.domain.*;
+import app.util.Data;
 import app.view.Logger;
 import app.view.SecretariaMenu;
 
 public class App {
 
     public static void main(String[] args) {
-
-        Secretaria secretaria = new Secretaria();
-        Professor professor = new Professor("João");
-        Aluno aluno = new Aluno("Maria");
+        Data data = Data.getInstance();
+        Secretaria secretaria = data.secretaria;
         
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");
@@ -39,6 +38,7 @@ public class App {
                         break;
                     case -1:
                         System.out.println("Saindo do programa. Até logo!");
+                        data.save();
                         break;
                     default:
                         System.out.println("Opção inválida");
