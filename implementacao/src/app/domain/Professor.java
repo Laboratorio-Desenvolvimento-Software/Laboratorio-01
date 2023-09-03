@@ -1,50 +1,64 @@
-package app.domain;
+package domain;
 
+import java.util.*;
 import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
 
 public class Professor implements Serializable {
 	private UUID id;
 	private String nome;
 	private List<Disciplina> disciplinas;
-	
+
 	public Professor(String nome) {
 		this.id = UUID.randomUUID();
 		setNome(nome);
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
 
-	public Professor(String nome, List<Disciplina> disciplinas) {
-		this.id = UUID.randomUUID();
-		setNome(nome);
-		setDisciplinas(disciplinas);
-	}
-	
+	//getters and setters
 	public UUID getId() {
-		return id;
+		return this.id;
 	}
-	
+
 	public String getNome() {
-		return nome;
-	}
-	
+		return this.nome;
+	} 
+
 	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
+		return this.disciplinas;
 	}
-	
+
+	public Disciplina consultarDisciplina(Disciplina disciplina) {
+		int index = this.disciplinas.indexOf(disciplina);
+		return this.disciplinas.get(index);
+	}
+
+	public List<Aluno> consultarAlunos(Disciplina disciplina) {
+		return this.consultarDisciplina(disciplina).alunosMatriculados();
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public void setDisciplinas(List<Disciplina> disciplinas) {
-		this.disciplinas = disciplinas;
+
+	public boolean adicionarDisciplina(Disciplina disciplina) {
+		if(this.disciplinas.contains(disciplina)) return false;
+
+		disciplina.setProfessor(this);
+		return this.disciplinas.add(disciplina);
 	}
 
 	@Override
 	public String toString() {
+		if(this.disciplinas.size() == 0) {
+			return "Professor{" +
+				"id=" + id +
+				", nome=" + nome +
+				", disciplinas=" + disciplinas +
+				'}';
+		}
 		return "Professor{" +
 				"id=" + id +
-				", nome='" + nome + '\'' +
+				", nome=" + nome +
 				", disciplinas=" + disciplinas +
 				'}';
 	}

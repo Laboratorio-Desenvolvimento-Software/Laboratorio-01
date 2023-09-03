@@ -1,8 +1,7 @@
-package app.domain;
+package domain;
 
+import java.util.*;
 import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
 
 public class Curso implements Serializable {
 	private UUID id;
@@ -10,47 +9,112 @@ public class Curso implements Serializable {
 	private int creditos;
 	private List<Disciplina> disciplinas;
 	private List<Aluno> alunos;
-	
-	Curso(String nome, int creditos){
-		this.id = UUID.randomUUID(); 
-		setCreditos(creditos);
-		setNome(nome);
+
+	// constructors
+	public Curso(String nome, int creditos) {
+		this.id = UUID.randomUUID();
+		this.nome = nome;
+		this.creditos = creditos;
+		this.alunos = new ArrayList<Aluno>();
+		this.disciplinas = new ArrayList<Disciplina>();
 	}
-	
-	Curso(String nome, int creditos, List<Disciplina> disciplina, List<Aluno> alunos){
-		this.id = UUID.randomUUID(); 
-		setAlunos(alunos);
-		setDisciplinas(disciplina);
-		setCreditos(creditos);
-		setNome(nome);
+
+	public Curso(String nome, int creditos, List<Disciplina> disciplinas) {
+		this.id = UUID.randomUUID();
+		this.nome = nome;
+		this.creditos = creditos;
+		this.disciplinas = disciplinas;
 	}
-	
+
+	public Curso(String nome, int creditos, List<Disciplina> disciplinas, List<Aluno> alunos) {
+		this.id = UUID.randomUUID();
+		this.nome = nome;
+		this.creditos = creditos;
+		this.disciplinas = disciplinas;
+		this.alunos = alunos;
+	}
+
+
+	// getters and setters
 	public UUID getId() {
 		return id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public int getCreditos() {
 		return creditos;
 	}
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
+
 	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	// methods
+	@Override
+	public String toString() {
+		return "Curso{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", creditos=" + creditos +
+				", disciplinas=" + disciplinas +
+				", alunos=" + alunos +
+				'}';
 	}
-	public void setCreditos(int creditos) {
-		this.creditos = creditos;
+
+	public void adicionarAluno(Aluno aluno) {
+		this.alunos.add(aluno);
 	}
-	public void setDisciplinas(List<Disciplina> disciplinas) {
-		this.disciplinas = disciplinas;
+
+	public void removerAluno(Aluno aluno) {
+		this.alunos.remove(aluno);
 	}
-	public void setAlunos(List<Aluno> alunos) {
-		this.alunos = alunos;
+
+	public void removerAluno(UUID id) {
+		for (Aluno aluno : this.alunos) {
+			if (aluno.getId() == id) {
+				this.alunos.remove(aluno);
+				break;
+			}
+		}
 	}
+
+	public Disciplina consultarDisciplina(Disciplina disciplina) {
+		int index = this.disciplinas.indexOf(disciplina);
+		return this.disciplinas.get(index);
+	}
+
+	public Disciplina consultarDisciplina(String nome) {
+		for (Disciplina disciplina : this.disciplinas) {
+			if (disciplina.getId().toString().equalsIgnoreCase(nome)) {
+				return disciplina;
+			}
+		}
+
+		return null;
+	}
+
+	public void adicionarDisciplina(Disciplina disciplina) {
+		this.disciplinas.add(disciplina);
+	}
+
+	public void removerDisciplina(Disciplina disciplina) {
+		this.disciplinas.remove(disciplina);
+	}
+
+	public void removerDisciplina(UUID id) {
+		for (Disciplina disciplina : this.disciplinas) {
+			if (disciplina.getId() == id) {
+				this.disciplinas.remove(disciplina);
+				break;
+			}
+		}
+	}
+
 }
