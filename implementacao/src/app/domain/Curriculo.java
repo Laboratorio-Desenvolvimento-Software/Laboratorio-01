@@ -1,4 +1,4 @@
-package domain;
+package app.domain;
 
 import java.util.*;
 import java.io.Serializable;
@@ -19,8 +19,6 @@ public class Curriculo implements Serializable {
 		setAluno(aluno);
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
-
-	// create getters and setters
 
 	public UUID getId() {
 		return this.id;

@@ -1,4 +1,4 @@
-package domain;
+package app.domain;
 
 import java.util.*;
 import java.io.Serializable;
@@ -14,7 +14,6 @@ public class Professor implements Serializable {
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
 
-	//getters and setters
 	public UUID getId() {
 		return this.id;
 	}

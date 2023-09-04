@@ -1,4 +1,4 @@
-package domain;
+package app.domain;
 
 import java.util.*;
 import java.io.Serializable;
@@ -10,7 +10,6 @@ public class Curso implements Serializable {
 	private List<Disciplina> disciplinas;
 	private List<Aluno> alunos;
 
-	// constructors
 	public Curso(String nome, int creditos) {
 		this.id = UUID.randomUUID();
 		this.nome = nome;
@@ -34,8 +33,6 @@ public class Curso implements Serializable {
 		this.alunos = alunos;
 	}
 
-
-	// getters and setters
 	public UUID getId() {
 		return id;
 	}
@@ -56,7 +53,6 @@ public class Curso implements Serializable {
 		return alunos;
 	}
 
-	// methods
 	@Override
 	public String toString() {
 		return "Curso{" +

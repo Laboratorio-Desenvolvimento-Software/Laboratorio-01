@@ -1,17 +1,16 @@
-package view;
+package app;
 
 import java.util.Scanner;
-
-import src.app.domain.*;
-
+import app.domain.*;
+import app.util.Data;
+import app.view.Logger;
+import app.view.SecretariaMenu;
 
 public class App {
 
     public static void main(String[] args) {
-
-        Secretaria secretaria = new Secretaria();
-        Professor professor = new Professor("João");
-        Aluno aluno = new Aluno("Maria");
+        Data data = Data.getInstance();
+        Secretaria secretaria = data.secretaria;
         
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");
@@ -39,6 +38,7 @@ public class App {
                         break;
                     case -1:
                         System.out.println("Saindo do programa. Até logo!");
+                        data.save();
                         break;
                     default:
                         System.out.println("Opção inválida");
@@ -48,21 +48,11 @@ public class App {
         }
     }
 
-
     public static void professorMenu(Scanner scanner) {
         System.out.println("Professor");
-        // You can add professor-specific functionality here
-
-
-        return;
     }
 
     public static void alunoMenu(Scanner scanner) {
         System.out.println("Aluno");
-        // You can add aluno-specific functionality here
-
-        // To go back to the main menu, you can simply return from this method
-        // The loop in the main method will continue, and the user can choose another option.
-        return;
     }
 }

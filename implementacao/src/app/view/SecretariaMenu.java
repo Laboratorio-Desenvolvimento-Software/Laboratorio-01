@@ -1,7 +1,8 @@
-package view;
+package app.view;
 
-import java.util.*;
-import src.app.domain.*;
+import app.domain.*;
+import java.util.List;
+import java.util.Scanner;
 
 public class SecretariaMenu {
 
@@ -12,9 +13,9 @@ public class SecretariaMenu {
         this.secretaria = secretaria;
         this.scanner = scanner;
 
-        String opt = "";
+        String opt;
 
-        while (opt != "-1") { 
+        while (true) {
             Logger.info("Menu Secretaria");
             System.out.println("1) - Gerenciar alunos");
             System.out.println("2) - Gerenciar professores");
@@ -49,7 +50,6 @@ public class SecretariaMenu {
                 break;
             }
         }
-        return;
     }
 
 
@@ -125,7 +125,6 @@ public class SecretariaMenu {
                 break;
             }
         }
-        return;
     }
 
 
@@ -269,7 +268,6 @@ public class SecretariaMenu {
                 break;
             }
         }
-        return;
     }
 
 
@@ -391,7 +389,6 @@ public class SecretariaMenu {
                 break;
             }
         }
-        return;
     }
 
 
@@ -399,12 +396,12 @@ public class SecretariaMenu {
         String opt = "";
 
         while (opt != "-1") { 
-            Logger.info("Menu Secretaria | Gerenciar curriculo");
-            System.out.println("1) - Listar curriculos");
-            System.out.println("2) - Gerar novo curriculo");
-            System.out.println("3) - Remover curriculo");
-            System.out.println("4) - Buscar curriculo");
-            System.out.println("5) - Calcular custo de curriculo");
+            Logger.info("Menu Secretaria | Gerenciar currículos");
+            System.out.println("1) - Listar currículos");
+            System.out.println("2) - Gerar novo currículos");
+            System.out.println("3) - Remover currículos");
+            System.out.println("4) - Buscar currículos");
+            System.out.println("5) - Calcular custo de currículos");
             System.out.println("-1) - Sair");
             System.out.print("Opção: ");
             opt = this.scanner.next();
@@ -414,7 +411,7 @@ public class SecretariaMenu {
                     List<Curriculo> curriculo = this.secretaria.getCurriculos();
 
                     if(curriculo == null || curriculo.isEmpty()) {
-                        Logger.error("Não há curriculos cadastrados!");
+                        Logger.error("Não há currículos cadastrados!");
                         break;
                     }
 
@@ -527,7 +524,6 @@ public class SecretariaMenu {
                 break;
             }
         }
-        return;
     }
 }
 
