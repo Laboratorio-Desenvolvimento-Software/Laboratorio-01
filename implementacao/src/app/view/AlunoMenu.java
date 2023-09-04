@@ -2,7 +2,7 @@ package app.view;
 
 import app.domain.Aluno;
 import app.domain.Curriculo;
-import app.domain.Secretaria;
+import app.util.Data;
 
 import java.util.Scanner;
 
@@ -10,10 +10,12 @@ public class AlunoMenu {
     Aluno aluno;
     Scanner scanner;
 
+    Data data;
 
-    public AlunoMenu(Aluno aluno, Scanner scanner) {
+    public AlunoMenu(Aluno aluno, Scanner scanner, Data data) {
         this.aluno = aluno;
         this.scanner = scanner;
+        this.data = data;
 
         String opt;
 
@@ -122,9 +124,7 @@ public class AlunoMenu {
                     double boleto = curriculo.calcularCargaHoraria();
                     Logger.success("Boleto bancário: " + boleto + " reais");
                 }
-                case "-1" -> {
-                    Logger.info("Saindo do menu aluno");
-                }
+                case "-1" -> this.data.save();
                 default -> {
                     Logger.error("Opção inválida");
                 }

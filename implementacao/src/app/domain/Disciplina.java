@@ -23,6 +23,7 @@ public class Disciplina implements Serializable {
 		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.disponivel = true;
+		setProfessor(null);
 		setCreditos(creditos);
 		setPreco(preco);
 	}
@@ -118,11 +119,23 @@ public class Disciplina implements Serializable {
 
 	@Override
 	public String toString() {
+		if(professor == null) {
+			return "Disciplina{" +
+					"id=" + id +
+					", nome=" + nome +
+					", periodo=" + periodo +
+					", professor=" + null +
+					", alunos=" + alunos +
+					", disponivel=" + disponivel +
+					", creditos=" + creditos +
+					", preco=" + preco +
+					'}';
+		}
 		return "Disciplina{" +
 				"id=" + id +
 				", nome=" + nome +
 				", periodo=" + periodo +
-				", professor=" + professor +
+				", professor=" + professor.getNome() +
 				", alunos=" + alunos +
 				", disponivel=" + disponivel +
 				", creditos=" + creditos +

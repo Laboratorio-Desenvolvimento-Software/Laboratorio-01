@@ -3,7 +3,7 @@ package app.util;
 import java.io.*;
 
 public class Util {
-    private static final String path = "./implementacao/tmp/";
+    private static final String path = "../implementacao/tmp/";
 
     private Util() {
     }

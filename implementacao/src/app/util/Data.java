@@ -8,8 +8,8 @@ public class Data {
     private static Data INSTANCE;
 
     public Secretaria secretaria = new Secretaria();
-    public Professor professor = new Professor("João");
-    public Aluno aluno = new Aluno("João");
+    public Professor professor = new Professor("Iruka");
+    public Aluno aluno = new Aluno("Kirito");
 
     private Data() {}
 

@@ -2,6 +2,7 @@ package app.view;
 
 import app.domain.Disciplina;
 import app.domain.Professor;
+import app.util.Data;
 
 import java.util.List;
 import java.util.Scanner;
@@ -9,16 +10,18 @@ import java.util.Scanner;
 public class ProfessorMenu {
     Professor professor;
     Scanner scanner;
+    Data data;
 
-    public ProfessorMenu(Professor professor, Scanner scanner) {
+    public ProfessorMenu(Professor professor, Scanner scanner, Data data) {
         this.professor = professor;
         this.scanner = scanner;
+        this.data = data;
 
         String opt;
 
         do {
 
-            Logger.info("Menu Secretaria");
+            Logger.info("Menu Professor");
             System.out.println("1) - Consultar disciplinas lecionadas");
             System.out.println("2) - Consultar alunos matriculados");
             System.out.println("-1) - Sair");
@@ -34,9 +37,7 @@ public class ProfessorMenu {
                         break;
                     }
 
-                    this.professor.getDisciplinas().forEach(disciplina -> {
-                        Logger.info("Id= " + disciplina.getId() + " Nome= " + disciplina.getNome());
-                    });
+                    this.professor.getDisciplinas().forEach(disciplina -> Logger.info("Id= " + disciplina.getId() + " Nome= " + disciplina.getNome()));
                 }
                 case "2" -> {
                     List<Disciplina> disciplinas = this.professor.getDisciplinas();
@@ -46,9 +47,7 @@ public class ProfessorMenu {
                         break;
                     }
 
-                    this.professor.getDisciplinas().forEach(disciplina -> {
-                        Logger.info("Id= " + disciplina.getId() + " Nome= " + disciplina.getNome());
-                    });
+                    this.professor.getDisciplinas().forEach(disciplina -> Logger.info("Id= " + disciplina.getId() + " Nome= " + disciplina.getNome()));
 
                     System.out.print("Digite o nome ou id da disciplina: ");
                     String id = scanner.nextLine();
@@ -67,7 +66,7 @@ public class ProfessorMenu {
                     });
 
                 }
-                case "-1" -> {}
+                case "-1" -> this.data.save();
                 default -> Logger.error(opt + " não é uma opção válida!");
             }
 

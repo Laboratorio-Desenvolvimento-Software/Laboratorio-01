@@ -93,7 +93,7 @@ public class Curso implements Serializable {
 
 	public Disciplina consultarDisciplina(String nome) {
 		for (Disciplina disciplina : this.disciplinas) {
-			if (disciplina.getId().toString().equalsIgnoreCase(nome)) {
+			if (disciplina.getId().toString().equalsIgnoreCase(nome) || disciplina.getNome().equalsIgnoreCase(nome)){
 				return disciplina;
 			}
 		}
