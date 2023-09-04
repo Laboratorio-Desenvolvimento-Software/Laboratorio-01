@@ -44,6 +44,10 @@ public class Disciplina implements Serializable {
 		return this.periodo;
 	}
 
+	public List<Aluno> getAlunos() {
+		return this.alunos;
+	}
+
 	public Professor getProfessor() {
 		return this.professor;
 	}
