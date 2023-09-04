@@ -14,7 +14,7 @@ public class Data {
             Data data = new Data();
             data.secretaria = new Secretaria();
             data.secretaria = Util.unSerialize(data.secretaria);
-
+            INSTANCE = data;
             return data;
         }
 

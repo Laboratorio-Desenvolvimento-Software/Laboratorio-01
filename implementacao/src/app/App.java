@@ -3,7 +3,9 @@ package app;
 import java.util.Scanner;
 import app.domain.*;
 import app.util.Data;
+import app.view.AlunoMenu;
 import app.view.Logger;
+import app.view.ProfessorMenu;
 import app.view.SecretariaMenu;
 
 public class App {
@@ -11,6 +13,8 @@ public class App {
     public static void main(String[] args) {
         Data data = Data.getInstance();
         Secretaria secretaria = data.secretaria;
+        Professor professor = new Professor("João");
+        Aluno aluno = new Aluno("João");
         
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");
@@ -27,32 +31,17 @@ public class App {
                 opt = scanner.nextInt();
 
                 switch (opt) {
-                    case 1:
-                        new SecretariaMenu(secretaria, scanner);
-                        break;
-                    case 2:
-                        professorMenu(scanner);
-                        break;
-                    case 3:
-                        alunoMenu(scanner);
-                        break;
-                    case -1:
+                    case 1 -> new SecretariaMenu(secretaria, scanner);
+                    case 2 -> new ProfessorMenu(professor, scanner);
+                    case 3 -> new AlunoMenu(aluno, scanner);
+                    case -1 -> {
                         System.out.println("Saindo do programa. Até logo!");
                         data.save();
-                        break;
-                    default:
-                        System.out.println("Opção inválida");
-                        break;
+                    }
+                    default -> System.out.println("Opção inválida");
                 }
             }
         }
     }
 
-    public static void professorMenu(Scanner scanner) {
-        System.out.println("Professor");
-    }
-
-    public static void alunoMenu(Scanner scanner) {
-        System.out.println("Aluno");
-    }
 }

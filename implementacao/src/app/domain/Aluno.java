@@ -38,6 +38,14 @@ public class Aluno implements Serializable{
 		return this.nome;
 	}
 
+	public Curriculo getCurriculo() {
+		return curriculo;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
 	public Curso consultarMatricula() {
 		return curso;
 	}

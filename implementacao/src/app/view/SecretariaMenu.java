@@ -15,7 +15,7 @@ public class SecretariaMenu {
 
         String opt;
 
-        while (true) {
+        do {
             Logger.info("Menu Secretaria");
             System.out.println("1) - Gerenciar alunos");
             System.out.println("2) - Gerenciar professores");
@@ -46,10 +46,7 @@ public class SecretariaMenu {
             }
 
 
-            if(opt.equals("-1")) {
-                break;
-            }
-        }
+        } while (!opt.equals("-1"));
     }
 
 
@@ -57,7 +54,7 @@ public class SecretariaMenu {
     public void gerenciarAluno() {
         String opt = "";
 
-        while (opt != "-1") { 
+        do {
             Logger.info("Menu Secretaria | Gerenciar alunos");
             System.out.println("1) - Listar alunos");
             System.out.println("2) - Matricular novo aluno");
@@ -71,7 +68,7 @@ public class SecretariaMenu {
                 case "1":
                     List<Aluno> alunos = this.secretaria.getAlunos();
 
-                    if(alunos == null || alunos.isEmpty()) {
+                    if (alunos == null || alunos.isEmpty()) {
                         Logger.error("Não há alunos cadastrados!");
                         break;
                     }
@@ -103,10 +100,11 @@ public class SecretariaMenu {
                 case "4":
                     System.out.print("Digite o nome ou nº da matricula do aluno: ");
                     this.scanner.nextLine();
-                    String searchAluno = this.scanner.nextLine();;
+                    String searchAluno = this.scanner.nextLine();
+                    ;
 
                     Aluno aluno = this.secretaria.consultarAluno(searchAluno);
-                    if(aluno == null) {
+                    if (aluno == null) {
                         Logger.error(searchAluno + " não encontrado!");
                         break;
                     }
@@ -121,17 +119,14 @@ public class SecretariaMenu {
             }
 
 
-            if(opt.equals("-1")) {
-                break;
-            }
-        }
+        } while (!opt.equals("-1"));
     }
 
 
     public void gerenciarProfessor() {
         String opt = "";
 
-        while (opt != "-1") { 
+        do {
             Logger.info("Menu Secretaria | Gerenciar professores");
             System.out.println("1) - Listar professores");
             System.out.println("2) - Cadastrar novo professores");
@@ -146,7 +141,7 @@ public class SecretariaMenu {
                 case "1":
                     List<Professor> professor = this.secretaria.getProfessores();
 
-                    if(professor == null || professor.isEmpty()) {
+                    if (professor == null || professor.isEmpty()) {
                         Logger.error("Não há professor cadastrados!");
                         break;
                     }
@@ -178,10 +173,11 @@ public class SecretariaMenu {
                 case "4":
                     System.out.print("Digite o nome ou id do professor: ");
                     this.scanner.nextLine();
-                    String searchProfessor = this.scanner.nextLine();;
+                    String searchProfessor = this.scanner.nextLine();
+                    ;
 
                     Professor p = this.secretaria.consultarProfessor(searchProfessor);
-                    if(p == null) {
+                    if (p == null) {
                         Logger.error(searchProfessor + " não encontrado!");
                         break;
                     }
@@ -191,7 +187,7 @@ public class SecretariaMenu {
                 case "5":
                     List<Professor> professor1 = this.secretaria.getProfessores();
 
-                    if(professor1 == null || professor1.isEmpty()) {
+                    if (professor1 == null || professor1.isEmpty()) {
                         Logger.error("Não há professor cadastrados!");
                         break;
                     }
@@ -208,14 +204,14 @@ public class SecretariaMenu {
 
                     Professor professorConsultado = this.secretaria.consultarProfessor(nomeProfessor);
 
-                    if(professorConsultado == null) {
+                    if (professorConsultado == null) {
                         Logger.error(nomeProfessor + " não encontrado!");
                         break;
                     }
 
                     List<Curso> cursos = this.secretaria.getCursos();
 
-                    if(cursos == null || cursos.isEmpty()) {
+                    if (cursos == null || cursos.isEmpty()) {
                         Logger.error("Não há cursos cadastrados!");
                         break;
                     }
@@ -231,7 +227,7 @@ public class SecretariaMenu {
 
                     Curso cursoConsultado = this.secretaria.consultarCurso(nomeCurso);
 
-                    if(cursoConsultado == null) {
+                    if (cursoConsultado == null) {
                         Logger.error(nomeCurso + " não encontrado!");
                         break;
                     }
@@ -247,7 +243,7 @@ public class SecretariaMenu {
 
                     Disciplina disciplina = cursoConsultado.consultarDisciplina(nomeDisciplina);
 
-                    if(disciplina == null) {
+                    if (disciplina == null) {
                         Logger.error(nomeDisciplina + " não encontrado!");
                         break;
                     }
@@ -264,17 +260,14 @@ public class SecretariaMenu {
                     break;
             }
 
-            if(opt.equals("-1")) {
-                break;
-            }
-        }
+        } while (!opt.equals("-1"));
     }
 
 
     public void genrenciarCurso() {
         String opt = "";
 
-        while (opt != "-1") { 
+        do {
             Logger.info("Menu Secretaria | Gerenciar curso");
             System.out.println("1) - Listar cursos");
             System.out.println("2) - Cadastrar novo cursos");
@@ -289,7 +282,7 @@ public class SecretariaMenu {
                 case "1":
                     List<Curso> curso = this.secretaria.getCursos();
 
-                    if(curso == null || curso.isEmpty()) {
+                    if (curso == null || curso.isEmpty()) {
                         Logger.error("Não há cursos cadastrados!");
                         break;
                     }
@@ -327,17 +320,17 @@ public class SecretariaMenu {
                     String searchCurso = this.scanner.nextLine();
 
                     Curso c = this.secretaria.consultarCurso(searchCurso);
-                    if(c == null) {
+                    if (c == null) {
                         Logger.error("Curso " + searchCurso + " não encontrado!");
                         break;
                     }
 
                     Logger.warning(c.toString());
                     break;
-                case "5": 
+                case "5":
                     List<Curso> allCurso = this.secretaria.getCursos();
 
-                    if(allCurso == null || allCurso.isEmpty()) {
+                    if (allCurso == null || allCurso.isEmpty()) {
                         Logger.error("Não há cursos cadastrados!");
                         break;
                     }
@@ -353,7 +346,7 @@ public class SecretariaMenu {
                     String searchCurso2 = this.scanner.nextLine();
 
                     Curso cursoConsultado = this.secretaria.consultarCurso(searchCurso2);
-                    if(cursoConsultado == null) {
+                    if (cursoConsultado == null) {
                         Logger.error("Curso " + searchCurso2 + " não encontrado!");
                         break;
                     }
@@ -364,7 +357,7 @@ public class SecretariaMenu {
                     System.out.print("Digite o periodo da disciplina: ");
                     int periodoDisciplina = this.scanner.nextInt();
 
-                    if(periodoDisciplina < 0 || periodoDisciplina > 16) {
+                    if (periodoDisciplina < 0 || periodoDisciplina > 16) {
                         Logger.error("Periodo inválido!");
                         break;
                     }
@@ -385,17 +378,14 @@ public class SecretariaMenu {
                     break;
             }
 
-            if(opt.equals("-1")) {
-                break;
-            }
-        }
+        } while (!opt.equals("-1"));
     }
 
 
     public void gerenciarCurriculo() {
         String opt = "";
 
-        while (opt != "-1") { 
+        do {
             Logger.info("Menu Secretaria | Gerenciar currículos");
             System.out.println("1) - Listar currículos");
             System.out.println("2) - Gerar novo currículos");
@@ -410,7 +400,7 @@ public class SecretariaMenu {
                 case "1":
                     List<Curriculo> curriculo = this.secretaria.getCurriculos();
 
-                    if(curriculo == null || curriculo.isEmpty()) {
+                    if (curriculo == null || curriculo.isEmpty()) {
                         Logger.error("Não há currículos cadastrados!");
                         break;
                     }
@@ -428,18 +418,18 @@ public class SecretariaMenu {
                             Logger.warning(c.toString());
                         }
                     });
- 
+
                     System.out.print("Digite o nome ou id do curso: ");
                     this.scanner.nextLine();
                     String newCurso = this.scanner.nextLine();
 
                     Curso curso = this.secretaria.consultarCurso(newCurso);
-                    
-                    if(curso == null) {
+
+                    if (curso == null) {
                         Logger.error("Curso " + newCurso + " não encontrado!");
                         break;
                     }
-                    
+
                     this.secretaria.getAlunos().forEach(a -> {
                         if (a != null) {
                             Logger.warning(a.toString());
@@ -451,7 +441,7 @@ public class SecretariaMenu {
 
                     Aluno aluno = this.secretaria.consultarAluno(newAluno);
 
-                    if(aluno == null) {
+                    if (aluno == null) {
                         Logger.error("Aluno " + newAluno + " não encontrado!");
                         break;
                     }
@@ -459,7 +449,7 @@ public class SecretariaMenu {
                     System.out.print("Digite o ano decorrente: ");
                     int newAno = this.scanner.nextInt();
 
-                    if(newAno < 0 || newAno > 9999) {
+                    if (newAno < 0 || newAno > 9999) {
                         Logger.error("Ano inválido!");
                         break;
                     }
@@ -467,7 +457,7 @@ public class SecretariaMenu {
                     System.out.print("Digite o semestre decorrente: ");
                     int newSemestre = this.scanner.nextInt();
 
-                    if(newSemestre < 0 || newSemestre > 2) {
+                    if (newSemestre < 0 || newSemestre > 2) {
                         Logger.error("Semestre inválido!");
                         break;
                     }
@@ -491,7 +481,7 @@ public class SecretariaMenu {
 
                     Curriculo c = this.secretaria.consultarCurriculo(searchCurriculo);
 
-                    if(c == null) {
+                    if (c == null) {
                         Logger.error("Curriculo " + searchCurriculo + " não encontrado!");
                         break;
                     }
@@ -505,7 +495,7 @@ public class SecretariaMenu {
 
                     Curriculo c1 = this.secretaria.consultarCurriculo(searchCurriculoNome);
 
-                    if(c1 == null) {
+                    if (c1 == null) {
                         Logger.error("Curriculo " + searchCurriculoNome + " não encontrado!");
                         break;
                     }
@@ -520,10 +510,7 @@ public class SecretariaMenu {
                     break;
             }
 
-            if(opt.equals("-1")) {
-                break;
-            }
-        }
+        } while (!opt.equals("-1"));
     }
 }
 

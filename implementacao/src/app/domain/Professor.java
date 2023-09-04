@@ -31,6 +31,15 @@ public class Professor implements Serializable {
 		return this.disciplinas.get(index);
 	}
 
+	public Disciplina consultarDisciplina(String nome) {
+		for(Disciplina disciplina : this.disciplinas) {
+			if(disciplina.getNome().equalsIgnoreCase(nome) || disciplina.getId().toString().equalsIgnoreCase(nome)) {
+				return disciplina;
+			}
+		}
+		return null;
+	}
+
 	public List<Aluno> consultarAlunos(Disciplina disciplina) {
 		return this.consultarDisciplina(disciplina).alunosMatriculados();
 	}
