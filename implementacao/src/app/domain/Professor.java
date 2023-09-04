@@ -1,9 +1,14 @@
 package app.domain;
 
+import java.io.Serial;
 import java.util.*;
 import java.io.Serializable;
 
 public class Professor implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 1679216379057236702L;
+
 	private UUID id;
 	private String nome;
 	private List<Disciplina> disciplinas;

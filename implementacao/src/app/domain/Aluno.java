@@ -1,9 +1,14 @@
 package app.domain;
 
+import java.io.Serial;
 import java.util.*;
 import java.io.Serializable;
 
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 7843201467707381781L;
+
 	private UUID id;
 	private String nome;
 	private Curso curso;

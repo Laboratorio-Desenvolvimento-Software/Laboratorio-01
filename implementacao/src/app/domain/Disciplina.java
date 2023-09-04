@@ -1,10 +1,15 @@
 package app.domain;
 
+import java.io.Serial;
 import java.util.*;
 import java.io.Serializable;
 import java.util.List;
 
 public class Disciplina implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 6754145710048669351L;
+
 	private UUID id;
 	private String nome;
 	private int periodo;

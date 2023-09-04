@@ -1,10 +1,15 @@
 package app.domain;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Secretaria implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 5642102549412781713L;
+
 	private List<Curriculo> curriculos;
 	private List<Curso> cursos;
 	private List<Professor> professores;

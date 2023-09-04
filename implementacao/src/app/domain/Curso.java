@@ -1,9 +1,14 @@
 package app.domain;
 
+import java.io.Serial;
 import java.util.*;
 import java.io.Serializable;
 
 public class Curso implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 6441138151809754126L;
+
 	private UUID id;
 	private String nome;
 	private int creditos;

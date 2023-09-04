@@ -13,8 +13,8 @@ public class App {
     public static void main(String[] args) {
         Data data = Data.getInstance();
         Secretaria secretaria = data.secretaria;
-        Professor professor = new Professor("João");
-        Aluno aluno = new Aluno("João");
+        Professor professor = data.professor;
+        Aluno aluno = data.aluno;
         
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");

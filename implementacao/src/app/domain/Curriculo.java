@@ -1,9 +1,14 @@
 package app.domain;
 
+import java.io.Serial;
 import java.util.*;
 import java.io.Serializable;
 
 public class Curriculo implements Serializable {
+
+	@Serial
+	private static final long serialVersionUID = 7804906008877094589L;
+
 	private UUID id;
 	private int ano;
 	private int semestre;
