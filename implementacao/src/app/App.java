@@ -15,32 +15,38 @@ public class App {
         Secretaria secretaria = data.secretaria;
         Professor professor = data.professor;
         Aluno aluno = data.aluno;
-        
+
+        if(secretaria.consultarAluno(aluno.getNome()) == null)
+            secretaria.matricularAluno(aluno);
+        if(secretaria.consultarProfessor(professor.getNome()) == null)
+            secretaria.cadastrarProfessor(professor);
+
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Bem-vindo ao sistema de gerenciamento interno da Faculdade LAYOFF");
 
-            int opt = 0;
+            Logger.info("Sistema de gerenciamento interno da Faculdade LAYOFF");
 
-            while (opt != -1) {
+            String opt;
+
+            do {
                 Logger.info("Selecione um menu");
                 System.out.println("1) - Secretaria");
                 System.out.println("2) - Professor");
                 System.out.println("3) - Aluno");
                 System.out.println("-1) - Sair");
                 System.out.print("Opção: ");
-                opt = scanner.nextInt();
+                opt = scanner.next();
 
                 switch (opt) {
-                    case 1 -> new SecretariaMenu(secretaria, scanner);
-                    case 2 -> new ProfessorMenu(professor, scanner);
-                    case 3 -> new AlunoMenu(aluno, scanner);
-                    case -1 -> {
+                    case "1" -> new SecretariaMenu(secretaria, scanner, data);
+                    case "2" -> new ProfessorMenu(professor, scanner, data);
+                    case "3" -> new AlunoMenu(aluno, scanner, data);
+                    case "-1" -> {
                         System.out.println("Saindo do programa. Até logo!");
                         data.save();
                     }
                     default -> System.out.println("Opção inválida");
                 }
-            }
+            } while (!opt.equals("-1"));
         }
     }
 

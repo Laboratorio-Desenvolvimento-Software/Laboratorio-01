@@ -1,6 +1,8 @@
 package app.view;
 
 import app.domain.*;
+import app.util.Data;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,10 +10,13 @@ public class SecretariaMenu {
 
     Secretaria secretaria;
     Scanner scanner;
+
+    Data data;
     
-    public SecretariaMenu(Secretaria secretaria, Scanner scanner) {
+    public SecretariaMenu(Secretaria secretaria, Scanner scanner, Data data) {
         this.secretaria = secretaria;
         this.scanner = scanner;
+        this.data = data;
 
         String opt;
 
@@ -49,10 +54,8 @@ public class SecretariaMenu {
         } while (!opt.equals("-1"));
     }
 
-
-
     public void gerenciarAluno() {
-        String opt = "";
+        String opt;
 
         do {
             Logger.info("Menu Secretaria | Gerenciar alunos");
@@ -112,6 +115,7 @@ public class SecretariaMenu {
                     Logger.warning(aluno.toString());
                     break;
                 case "-1":
+                    this.data.save();
                     break;
                 default:
                     Logger.error(opt + " não é uma opção válida!");
@@ -238,7 +242,7 @@ public class SecretariaMenu {
                         }
                     });
 
-                    System.out.println("Digite o id da disciplina: ");
+                    System.out.println("Digite o nome ou id da disciplina: ");
                     String nomeDisciplina = this.scanner.nextLine();
 
                     Disciplina disciplina = cursoConsultado.consultarDisciplina(nomeDisciplina);
@@ -254,6 +258,7 @@ public class SecretariaMenu {
 
                     break;
                 case "-1":
+                    this.data.save();
                     break;
                 default:
                     Logger.error(opt + " não é uma opção válida!");
@@ -372,6 +377,7 @@ public class SecretariaMenu {
 
                     break;
                 case "-1":
+                    this.data.save();
                     break;
                 default:
                     Logger.error(opt + " não é uma opção válida!");
@@ -504,6 +510,7 @@ public class SecretariaMenu {
                     Logger.success("Curriculo de " + c1.getAluno().getNome() + " custará " + custo + " reais");
                     break;
                 case "-1":
+                    this.data.save();
                     break;
                 default:
                     Logger.error(opt + " não é uma opção válida!");

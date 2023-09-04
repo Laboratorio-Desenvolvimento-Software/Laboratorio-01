@@ -95,6 +95,10 @@ public class Secretaria implements Serializable {
 	// Aluno
 	// ================================================================
 
+	public boolean matricularAluno(Aluno aluno) {
+		return this.alunos.add(aluno);
+	}
+
 	public boolean matricularNovoAluno(String nome) {
 		return this.alunos.add(new Aluno(nome));
 	}
@@ -130,6 +134,10 @@ public class Secretaria implements Serializable {
 	// ================================================================
 	// Professor
 	// ================================================================
+
+	public boolean cadastrarProfessor(Professor professor) {
+		return this.professores.add(professor);
+	}
 
 	public boolean cadastrarNovoProfessor(String nome) {
 		return this.professores.add(new Professor(nome));
